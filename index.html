@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Body Styling */
+        body {
+            background-color: #ffffff; 
+            color: #333;
+        }
+
+        /* Header Styling */
+        .header {
+            width: 100%;
+            padding: 15px 5%;
+            text-align: center;
+            border-bottom: 1px solid #f0f0f0; 
+        }
+
+        .header img {
+            max-height: 50px;
+            object-fit: contain;
+        }
+
+        /* Banner Styling */
+        .banner-section {
+            width: 100%;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 5%;
+            text-align: center;
+        }
+
+        .banner-section img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px; 
+            /* Agar banner image pe border chahiye toh ye un-comment kar sakte ho: border: 1px solid #e0e0e0; */
+        }
+
+        /* Cards Container Styling */
+        .options-section {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 5%;
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        /* Individual Card Styling (2D Clean Look) */
+        .card {
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0; 
+            border-radius: 12px;
+            padding: 40px 20px;
+            text-align: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03); 
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Icons inside card */
+        .card .card-icon {
+            width: 60px; /* Icon ka size aap yaha se bada chhota kar sakte ho */
+            height: 60px;
+            margin-bottom: 20px;
+            object-fit: contain;
+        }
+
+        /* Problem Text */
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: #222;
+        }
+
+        /* Yellow Button Styling */
+        .btn-yellow {
+            background-color: #FFED00; 
+            color: #000000; 
+            border: none;
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 6px; 
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-yellow:hover {
+            background-color: #e6d500; 
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="header">
+        <img src="logo/logo.png" alt="Main Logo">
+    </header>
+
+    <!-- Banner Section -->
+    <section class="banner-section">
+        <!-- Agar banner ka path ya extension alag hai toh yahan change karna -->
+        <img src="banner/banner.png" alt="Help Center Banner">
+    </section>
+
+    <!-- Options Section -->
+    <section class="options-section">
+        <div class="card-container">
+            
+            <!-- Card 1: Deposit Problem -->
+            <div class="card">
+                <!-- Niche wali line me icon ka path hai -->
+                <img src="icons/deposit.png" alt="Deposit Icon" class="card-icon">
+                <h3>Deposit Problem</h3>
+                <button class="btn-yellow">Get Help</button>
+            </div>
+
+            <!-- Card 2: Withdrawal Problem -->
+            <div class="card">
+                <!-- Niche wali line me icon ka path hai -->
+                <img src="icons/withdrawal.png" alt="Withdrawal Icon" class="card-icon">
+                <h3>Withdrawal Problem</h3>
+                <button class="btn-yellow">Get Help</button>
+            </div>
+
+            <!-- Card 3: Email Verification -->
+            <div class="card">
+                <!-- Niche wali line me icon ka path hai -->
+                <img src="icons/email.png" alt="Email Icon" class="card-icon">
+                <h3>Email Verification</h3>
+                <button class="btn-yellow">Get Help</button>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+</html>
