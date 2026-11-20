@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us — CROREBET Help Center</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <meta name="theme-color" content="#FFA500">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ==========================================
+         HEADER
+         ========================================== -->
+    <header class="header">
+        <a href="index.html" class="logo-link">
+            <img src="logo/logo.png" alt="CROREBET Logo">
+        </a>
+
+        <button class="menu-btn" id="menuBtn" aria-label="Open Menu" aria-expanded="false" aria-controls="sidebar">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <!-- ==========================================
+         SIDEBAR MENU
+         ========================================== -->
+    <aside class="sidebar" id="sidebar" aria-hidden="true">
+        <div class="sidebar-header">
+            <img src="logo/logo.png" alt="CROREBET Logo">
+            <button class="sidebar-close" id="sidebarClose" aria-label="Close Menu">&times;</button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="index.html">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 10.5L12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1v-9.5z" stroke="#FFA500" stroke-width="1.8" stroke-linejoin="round"/>
+                </svg>
+                Home
+            </a>
+            <a href="index.html#deposit">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2.5" y="6" width="19" height="13" rx="2.5" stroke="#FFA500" stroke-width="1.8"/>
+                    <path d="M2.5 10.5h19" stroke="#FFA500" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M12 19.5v-6M9.5 15.5L12 13l2.5 2.5" stroke="#FFA500" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Deposit Problem
+            </a>
+            <a href="index.html#withdrawal">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2.5" y="6" width="19" height="13" rx="2.5" stroke="#FFA500" stroke-width="1.8"/>
+                    <path d="M2.5 10.5h19" stroke="#FFA500" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M12 13v6M9.5 16.5L12 19l2.5-2.5" stroke="#FFA500" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Withdrawal Problem
+            </a>
+            <a href="index.html#email">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2.5" y="5" width="19" height="14" rx="2" stroke="#FFA500" stroke-width="1.8"/>
+                    <path d="M3.5 7l7.4 5.2a2 2 0 0 0 2.2 0L20.5 7" stroke="#FFA500" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Email Verification
+            </a>
+            <a href="index.html#faqs">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="9.2" stroke="#FFA500" stroke-width="1.8"/>
+                    <path d="M9.6 9.2a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1.1 1-1.1 1.7v.4" stroke="#FFA500" stroke-width="1.8" stroke-linecap="round"/>
+                    <circle cx="12" cy="17" r="1.1" fill="#FFA500"/>
+                </svg>
+                FAQs
+            </a>
+            <a href="about.html" class="active">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="9.2" stroke="#FFA500" stroke-width="1.8"/>
+                    <path d="M12 11v6" stroke="#FFA500" stroke-width="1.8" stroke-linecap="round"/>
+                    <circle cx="12" cy="7.6" r="1.15" fill="#FFA500"/>
+                </svg>
+                About
+            </a>
+            <a href="terms.html">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.5 3.5h7.5L19 8.5v11a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 5 19.5v-14A1.5 1.5 0 0 1 6.5 3.5z" stroke="#FFA500" stroke-width="1.8" stroke-linejoin="round"/>
+                    <path d="M13.5 3.8V9h5" stroke="#FFA500" stroke-width="1.8" stroke-linejoin="round"/>
+                    <path d="M8.5 13h7M8.5 16.5h4.5" stroke="#FFA500" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+                Terms &amp; Conditions
+            </a>
+            <a href="index.html#contact">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 5.5h16a1.5 1.5 0 0 1 1.5 1.5v9a1.5 1.5 0 0 1-1.5 1.5h-8.5L7 21v-3.5H4A1.5 1.5 0 0 1 2.5 16V7A1.5 1.5 0 0 1 4 5.5z" stroke="#FFA500" stroke-width="1.8" stroke-linejoin="round"/>
+                    <path d="M8 11h8" stroke="#FFA500" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+                Contact Support
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Dark Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- ==========================================
+         PAGE HERO
+         ========================================== -->
+    <section class="page-hero">
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span>&rsaquo;</span>
+            <span>About</span>
+        </div>
+        <h1>About <span>CROREBET</span> Help Center</h1>
+        <p>A dedicated support platform built to help users resolve account-related issues quickly, clearly and without frustration.</p>
+        <span class="meta">Last updated: November 2026</span>
+    </section>
+
+    <!-- ==========================================
+         CONTENT
+         ========================================== -->
+    <main class="page-wrap">
+
+        <!-- 1. What This Project Is -->
+        <div class="content-block">
+            <h2>What Is This Project?</h2>
+            <p>
+                The <strong>CROREBET Help Center</strong> is a self-service support portal for users of the CROREBET platform.
+                It brings the most common account problems — deposits, withdrawals and email verification — into one simple,
+                easy-to-navigate page so that users can find the right help without waiting in long queues.
+            </p>
+            <p>
+                Instead of searching through scattered FAQs or waiting for a chat agent, a user simply selects the problem
+                they are facing and gets directed to the appropriate support option. The goal is simple:
+                <strong>less confusion, faster resolution.</strong>
+            </p>
+        </div>
+
+        <!-- 2. Why It Exists -->
+        <div class="content-block">
+            <h2>Why This Help Center Exists</h2>
+            <p>Most support requests on a gaming or wallet-based platform fall into just a handful of categories. This portal focuses on exactly those categories so that:</p>
+            <ul class="point-list">
+                <li><strong>Users reach the right help faster</strong> — no need to describe the same problem repeatedly.</li>
+                <li><strong>Support teams get better context</strong> — issues arrive already categorised, so agents can act immediately.</li>
+                <li><strong>Common questions are answered instantly</strong> — the FAQ section resolves many doubts without any agent involvement.</li>
+                <li><strong>The experience stays consistent</strong> — one clear page for desktop and mobile users alike.</li>
+            </ul>
+        </div>
+
+        <!-- 3. How It Works -->
+        <div class="content-block">
+            <h2>How It Works</h2>
+            <p>The portal is designed to be used in three straightforward steps:</p>
+            <ol class="step-list">
+                <li>
+                    <strong>Select your problem category</strong>
+                    Choose between <em>Deposit Problem</em>, <em>Withdrawal Problem</em> or <em>Email Verification</em> from the cards on the home page.
+                </li>
+                <li>
+                    <strong>Share your issue details</strong>
+                    Provide the relevant information — such as transaction ID, registered email, or screenshots — so the team can understand the issue immediately.
+                </li>
+                <li>
+                    <strong>Get your issue resolved</strong>
+                    The support team reviews your request, verifies the details and works with you until the problem is fully closed.
+                </li>
+            </ol>
+        </div>
+
+        <!-- 4. What You Can Do Here -->
+        <div class="content-block">
+            <h2>What You Can Do Here</h2>
+            <p>The help center currently covers the most frequently reported account issues:</p>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="fc-icon">&#128179;</div>
+                    <h3>Deposit Support</h3>
+                    <p>Report deposits that are missing, delayed or not reflecting in your balance, and get them tracked.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="fc-icon">&#128176;</div>
+                    <h3>Withdrawal Support</h3>
+                    <p>Get help with pending, failed or rejected withdrawals and understand the status of your payout.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="fc-icon">&#9993;</div>
+                    <h3>Email Verification</h3>
+                    <p>Resolve issues with verification links, unverified accounts and email confirmation problems.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="fc-icon">&#10068;</div>
+                    <h3>FAQ Knowledge Base</h3>
+                    <p>Read quick answers about deposit timing, pending withdrawals, data safety and more.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="fc-icon">&#128172;</div>
+                    <h3>Direct Support Contact</h3>
+                    <p>Reach the support team whenever an issue cannot be solved through the self-service options.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="fc-icon">&#128241;</div>
+                    <h3>Mobile-Friendly Access</h3>
+                    <p>Everything works smoothly on phones, tablets and desktops — with a slide-out menu for easy navigation.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. Our Principles -->
+        <div class="content-block">
+            <h2>Our Principles</h2>
+            <ul class="point-list">
+                <li><strong>Clarity first</strong> — every page is written in plain language, without technical jargon.</li>
+                <li><strong>Speed matters</strong> — issues are categorised so they can be routed and resolved faster.</li>
+                <li><strong>Privacy is respected</strong> — personal details shared for support are used only to resolve the issue.</li>
+                <li><strong>Continuous improvement</strong> — the portal is updated regularly as platform features and policies evolve.</li>
+            </ul>
+        </div>
+
+        <!-- 6. Important Note -->
+        <div class="content-block">
+            <h2>An Important Note</h2>
+            <div class="note-box">
+                <p>
+                    <strong>Please note:</strong> The CROREBET Help Center is a support portal — it does not process payments
+                    and it will never ask for your password, OTP or any sensitive banking credentials. If anyone contacts you
+                    claiming to be from support and asks for such details, do not share them and report the incident immediately.
+                </p>
+            </div>
+        </div>
+
+        <!-- 7. Roadmap -->
+        <div class="content-block">
+            <h2>What's Coming Next</h2>
+            <p>This help center is an evolving project. As the platform grows, this portal will grow with it:</p>
+            <ul class="point-list">
+                <li>Additional support categories for KYC, account security and bonus-related queries.</li>
+                <li>Live chat integration so users can talk to an agent without leaving the page.</li>
+                <li>A searchable knowledge base with expanded step-by-step guides.</li>
+                <li>Multi-language support for a wider user base.</li>
+            </ul>
+            <p>
+                When new features are released, the content on the <a href="about.html" style="color:#FFA500;font-weight:600;text-decoration:none;">About</a>
+                and <a href="terms.html" style="color:#FFA500;font-weight:600;text-decoration:none;">Terms &amp; Conditions</a>
+                pages will be updated to reflect the current working of the project.
+            </p>
+        </div>
+
+        <!-- Contact Strip -->
+        <div class="contact-strip">
+            <h2>Still Have a Question?</h2>
+            <p>Our support team is available 24 hours a day, 7 days a week.</p>
+            <a href="index.html#contact">Contact Support</a>
+        </div>
+
+    </main>
+
+    <!-- ==========================================
+         FOOTER
+         ========================================== -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-col footer-brand">
+                <img src="logo/logo.png" alt="CROREBET Logo">
+                <p>Your trusted help center for fast, friendly and reliable support — whenever you need it.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <a href="index.html">Home</a>
+                <a href="index.html#deposit">Deposit Problem</a>
+                <a href="index.html#withdrawal">Withdrawal Problem</a>
+                <a href="index.html#email">Email Verification</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="about.html">About</a>
+                <a href="terms.html">Terms &amp; Conditions</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>Available 24/7</p>
+                <p>support@crorebet.com</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>&copy; <span id="year"></span> CROREBET Help Center. All rights reserved.</span>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            const menuBtn = document.getElementById('menuBtn');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            const sidebarClose = document.getElementById('sidebarClose');
+
+            function openMenu() {
+                sidebar.classList.add('open');
+                overlay.classList.add('show');
+                menuBtn.classList.add('active');
+                document.body.classList.add('no-scroll');
+                menuBtn.setAttribute('aria-expanded', 'true');
+                sidebar.setAttribute('aria-hidden', 'false');
+            }
+
+            function closeMenu() {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('show');
+                menuBtn.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+                menuBtn.setAttribute('aria-expanded', 'false');
+                sidebar.setAttribute('aria-hidden', 'true');
+            }
+
+            menuBtn.addEventListener('click', function () {
+                if (sidebar.classList.contains('open')) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            });
+
+            overlay.addEventListener('click', closeMenu);
+            sidebarClose.addEventListener('click', closeMenu);
+
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') closeMenu();
+            });
+
+            document.querySelectorAll('.sidebar-nav a').forEach(function (link) {
+                link.addEventListener('click', closeMenu);
+            });
+
+            const yearEl = document.getElementById('year');
+            if (yearEl) yearEl.textContent = new Date().getFullYear();
+        })();
+    </script>
+
+</body>
+</html>

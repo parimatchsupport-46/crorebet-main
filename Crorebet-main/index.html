@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <meta name="theme-color" content="#FFA500">
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Body Styling */
+        body {
+            background-color: #ffffff; 
+            color: #333;
+        }
+
+        /* Header Styling */
+        .header {
+            width: 100%;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #f0f0f0;
+            position: sticky;
+            top: 0;
+            background-color: #ffffff;
+            z-index: 100;
+        }
+
+        .header .logo-link {
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .header img {
+            max-height: 50px;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* Menu Toggle Button (Right Side) */
+        .menu-btn {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            width: 46px;
+            height: 46px;
+            padding: 12px 10px;
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .menu-btn:hover {
+            background-color: #f7f7f7;
+            border-color: #d0d0d0;
+        }
+
+        .menu-btn span {
+            display: block;
+            width: 100%;
+            height: 2.5px;
+            background-color: #222;
+            border-radius: 2px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        /* Animate hamburger to X when open */
+        .menu-btn.active {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .menu-btn.active span:nth-child(1) {
+            transform: translateY(7.5px) rotate(45deg);
+        }
+
+        .menu-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-btn.active span:nth-child(3) {
+            transform: translateY(-7.5px) rotate(-45deg);
+        }
+
+        /* Sidebar Menu (Slides in from Left) */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 300px;
+            max-width: 85%;
+            height: 100%;
+            background-color: #ffffff;
+            box-shadow: 2px 0 20px rgba(0, 0, 0, 0.15);
+            transform: translateX(-100%);
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .sidebar.open {
+            transform: translateX(0);
+        }
+
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .sidebar-header img {
+            max-height: 40px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .sidebar-close {
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            line-height: 1;
+            color: #666;
+            cursor: pointer;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .sidebar-close:hover {
+            background-color: #f2f2f2;
+            color: #000;
+        }
+
+        .sidebar-nav {
+            padding: 15px 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-nav a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px 24px;
+            text-decoration: none;
+            color: #333;
+            font-size: 1rem;
+            font-weight: 500;
+            border-left: 4px solid transparent;
+            transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+        }
+
+        .sidebar-nav a:hover {
+            background-color: #fff8e6;
+            border-left-color: #FFA500;
+            color: #000;
+        }
+
+        .sidebar-nav a .nav-icon {
+            width: 22px;
+            height: 22px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        /* Dark overlay behind sidebar */
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.45);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.35s ease, visibility 0.35s ease;
+            z-index: 999;
+        }
+
+        .overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Prevent page scroll when menu is open */
+        body.no-scroll {
+            overflow: hidden;
+        }
+
+        /* Banner Styling */
+        .banner-section {
+            width: 100%;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 5%;
+            text-align: center;
+        }
+
+        .banner-section img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px; 
+            /* Agar banner image pe border chahiye toh ye un-comment kar sakte ho: border: 1px solid #e0e0e0; */
+        }
+
+        /* Cards Container Styling */
+        .options-section {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 5%;
+        }
+
+        /* Heading below banner */
+        .options-title {
+            text-align: center;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #222;
+            margin-bottom: 30px;
+            letter-spacing: 0.2px;
+        }
+
+        @media (max-width: 600px) {
+            .options-title {
+                font-size: 1.3rem;
+            }
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        /* Individual Card Styling (2D Clean Look) */
+        .card {
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0; 
+            border-radius: 12px;
+            padding: 40px 20px;
+            text-align: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03); 
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Icons inside card */
+        .card .card-icon {
+            width: 60px; /* Icon ka size aap yaha se bada chhota kar sakte ho */
+            height: 60px;
+            margin-bottom: 20px;
+            object-fit: contain;
+        }
+
+        /* Problem Text */
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: #222;
+        }
+
+        /* Yellow Button Styling */
+        .btn-yellow {
+            display: inline-block;
+            background-color: #FFA500; 
+            color: #000000; 
+            border: none;
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 6px; 
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-yellow:hover {
+            background-color: #e69300; 
+        }
+
+        /* ============================================
+           EXTRA SECTIONS — Home Page ko interesting banane ke liye
+           ============================================ */
+
+        .section-pad {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 70px 5%;
+        }
+
+        .section-head {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-head h2 {
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+        }
+
+        .section-head p {
+            color: #666;
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .section-head .accent {
+            color: #FFA500;
+        }
+
+        /* --- 4. FAQ Accordion --- */
+        .faq-section {
+            background: #fff;
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .faq-item {
+            border: 1px solid #e8e8e8;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: border-color 0.25s ease;
+        }
+
+        .faq-item.open {
+            border-color: #FFA500;
+        }
+
+        .faq-q {
+            width: 100%;
+            background: #fff;
+            border: none;
+            text-align: left;
+            padding: 18px 22px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #222;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            font-family: inherit;
+            transition: background-color 0.2s ease;
+        }
+
+        .faq-q:hover {
+            background-color: #fafafa;
+        }
+
+        .faq-q .faq-icon {
+            flex-shrink: 0;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: #fff5e0;
+            color: #FFA500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.15rem;
+            font-weight: 700;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .faq-item.open .faq-icon {
+            transform: rotate(45deg);
+            background: #FFA500;
+            color: #fff;
+        }
+
+        .faq-a {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease;
+        }
+
+        .faq-a p {
+            padding: 0 22px 20px;
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.65;
+        }
+
+        /* --- Footer (Black Theme) --- */
+        .site-footer {
+            background: #141414;
+            color: #aaa;
+            padding: 50px 5% 0;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 35px;
+            padding-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: #ffffff;
+            font-size: 0.98rem;
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+
+        .footer-col p {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: #999;
+        }
+
+        .footer-col a {
+            display: block;
+            color: #999;
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 5px 0;
+            transition: color 0.2s ease;
+        }
+
+        .footer-col a:hover {
+            color: #FFA500;
+        }
+
+        .footer-brand img {
+            max-height: 44px;
+            margin-bottom: 14px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #2a2a2a;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 0.84rem;
+            color: #777;
+        }
+
+        @media (max-width: 600px) {
+            .section-pad {
+                padding: 50px 5%;
+            }
+
+            .section-head h2 {
+                font-size: 1.5rem;
+            }
+
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="header">
+        <a href="index.html" class="logo-link">
+            <img src="logo/logo.png" alt="CROREBET Logo">
+        </a>
+
+        <!-- Menu Button (Right Side) -->
+        <button class="menu-btn" id="menuBtn" aria-label="Open Menu" aria-expanded="false" aria-controls="sidebar">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <!-- Sidebar Menu (Slides in from Left) -->
+    <aside class="sidebar" id="sidebar" aria-hidden="true">
+        <div class="sidebar-header">
+            <img src="logo/logo.png" alt="CROREBET Logo">
+            <button class="sidebar-close" id="sidebarClose" aria-label="Close Menu">&times;</button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="index.html">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 10.5L12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1v-9.5z" stroke="#FFA500" stroke-width="1.8" stroke-linejoin="round"/>
+                </svg>
+                Home
+            </a>
+            <a href="#deposit">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2.5" y="6" width="19" height="13" rx="2.5" stroke="#FFA500" stroke-width="1.8"/>
+                    <path d="M2.5 10.5h19" stroke="#FFA500" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M12 19.5v-6M9.5 15.5L12 13l2.5 2.5" stroke="#FFA500" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Deposit Problem
+            </a>
+            <a href="#withdrawal">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2.5" y="6" width="19" height="13" rx="2.5" stroke="#FFA500" stroke-width="1.8"/>
+                    <path d="M2.5 10.5h19" stroke="#FFA500" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M12 13v6M9.5 16.5L12 19l2.5-2.5" stroke="#FFA500" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Withdrawal Problem
+            </a>
+            <a href="#email">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2.5" y="5" width="19" height="14" rx="2" stroke="#FFA500" stroke-width="1.8"/>
+                    <path d="M3.5 7l7.4 5.2a2 2 0 0 0 2.2 0L20.5 7" stroke="#FFA500" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Email Verification
+            </a>
+            <a href="#faqs">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="9.2" stroke="#FFA500" stroke-width="1.8"/>
+                    <path d="M9.6 9.2a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1.1 1-1.1 1.7v.4" stroke="#FFA500" stroke-width="1.8" stroke-linecap="round"/>
+                    <circle cx="12" cy="17" r="1.1" fill="#FFA500"/>
+                </svg>
+                FAQs
+            </a>
+            <a href="about.html">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="9.2" stroke="#FFA500" stroke-width="1.8"/>
+                    <path d="M12 11v6" stroke="#FFA500" stroke-width="1.8" stroke-linecap="round"/>
+                    <circle cx="12" cy="7.6" r="1.15" fill="#FFA500"/>
+                </svg>
+                About
+            </a>
+            <a href="terms.html">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.5 3.5h7.5L19 8.5v11a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 5 19.5v-14A1.5 1.5 0 0 1 6.5 3.5z" stroke="#FFA500" stroke-width="1.8" stroke-linejoin="round"/>
+                    <path d="M13.5 3.8V9h5" stroke="#FFA500" stroke-width="1.8" stroke-linejoin="round"/>
+                    <path d="M8.5 13h7M8.5 16.5h4.5" stroke="#FFA500" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+                Terms &amp; Conditions
+            </a>
+            <a href="#contact">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 5.5h16a1.5 1.5 0 0 1 1.5 1.5v9a1.5 1.5 0 0 1-1.5 1.5h-8.5L7 21v-3.5H4A1.5 1.5 0 0 1 2.5 16V7A1.5 1.5 0 0 1 4 5.5z" stroke="#FFA500" stroke-width="1.8" stroke-linejoin="round"/>
+                    <path d="M8 11h8" stroke="#FFA500" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+                Contact Support
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Dark Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Banner Section -->
+    <section class="banner-section">
+        <!-- Agar banner ka path ya extension alag hai toh yahan change karna -->
+        <img src="banner/banner.png" alt="Help Center Banner">
+    </section>
+
+    <!-- Options Section -->
+    <section class="options-section">
+        <h2 class="options-title">Select Your Problem Option</h2>
+
+        <div class="card-container">
+            
+            <!-- Card 1: Deposit Problem -->
+            <div class="card">
+                <!-- Niche wali line me icon ka path hai -->
+                <img src="icons/deposit.png" alt="Deposit Icon" class="card-icon">
+                <h3>Deposit Problem</h3>
+                <a href="deposit-complaint.html" class="btn-yellow">Get Help</a>
+            </div>
+
+            <!-- Card 2: Withdrawal Problem -->
+            <div class="card">
+                <!-- Niche wali line me icon ka path hai -->
+                <img src="icons/withdrawal.png" alt="Withdrawal Icon" class="card-icon">
+                <h3>Withdrawal Problem</h3>
+                <a href="withdrawal-complaint.html" class="btn-yellow">Get Help</a>
+            </div>
+
+            <!-- Card 3: Email Verification -->
+            <div class="card">
+                <!-- Niche wali line me icon ka path hai -->
+                <img src="icons/email.png" alt="Email Icon" class="card-icon">
+                <h3>Email Verification</h3>
+                <a href="email-complaint.html" class="btn-yellow">Get Help</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==========================================
+         FAQ SECTION
+         ========================================== -->
+    <section class="faq-section section-pad">
+        <div class="section-head">
+            <h2>Frequently Asked <span class="accent">Questions</span></h2>
+            <p>Quick answers to the questions we get asked the most</p>
+        </div>
+
+        <div class="faq-list">
+            <div class="faq-item">
+                <button class="faq-q" aria-expanded="false">
+                    How long does a deposit take to reflect?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-a">
+                    <p>Most deposits reflect instantly. If your deposit takes longer than 15 minutes, please contact support with the transaction ID and screenshot — we will track it for you immediately.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-q" aria-expanded="false">
+                    My withdrawal is pending — what should I do?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-a">
+                    <p>Withdrawals are usually processed within 24 hours. If yours is pending beyond that, check your KYC status first. If everything is verified, reach out via the Withdrawal Problem card above.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-q" aria-expanded="false">
+                    I did not receive the email verification link
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-a">
+                    <p>Please check your spam/junk folder first. If it is still missing, try resending the verification email from your account settings. If it fails again, contact support and we will verify your email manually.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-q" aria-expanded="false">
+                    What details should I share when contacting support?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-a">
+                    <p>Please share your registered email/username, a clear description of the issue, and any relevant screenshots or transaction IDs. Never share your password with anyone — including support.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-q" aria-expanded="false">
+                    Is my personal data safe with you?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-a">
+                    <p>Yes. All information you share with our support team is handled confidentially and used only to resolve your issue. We never sell or share your data with third parties.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         FOOTER
+         ========================================== -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-col footer-brand">
+                <img src="logo/logo.png" alt="CROREBET Logo">
+                <p>Your trusted help center for fast, friendly and reliable support — whenever you need it.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <a href="index.html">Home</a>
+                <a href="#deposit">Deposit Problem</a>
+                <a href="#withdrawal">Withdrawal Problem</a>
+                <a href="#email">Email Verification</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="about.html">About</a>
+                <a href="terms.html">Terms &amp; Conditions</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>Available 24/7</p>
+                <p>support@crorebet.com</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>&copy; <span id="year"></span> CROREBET Help Center. All rights reserved.</span>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            const menuBtn = document.getElementById('menuBtn');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            const sidebarClose = document.getElementById('sidebarClose');
+
+            function openMenu() {
+                sidebar.classList.add('open');
+                overlay.classList.add('show');
+                menuBtn.classList.add('active');
+                document.body.classList.add('no-scroll');
+                menuBtn.setAttribute('aria-expanded', 'true');
+                sidebar.setAttribute('aria-hidden', 'false');
+            }
+
+            function closeMenu() {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('show');
+                menuBtn.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+                menuBtn.setAttribute('aria-expanded', 'false');
+                sidebar.setAttribute('aria-hidden', 'true');
+            }
+
+            menuBtn.addEventListener('click', function () {
+                if (sidebar.classList.contains('open')) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            });
+
+            overlay.addEventListener('click', closeMenu);
+            sidebarClose.addEventListener('click', closeMenu);
+
+            // ESC key se menu close
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') closeMenu();
+            });
+
+            // Menu ke kisi link pe click karne se menu band ho jaye
+            document.querySelectorAll('.sidebar-nav a').forEach(function (link) {
+                link.addEventListener('click', closeMenu);
+            });
+
+            // FAQ accordion
+            document.querySelectorAll('.faq-q').forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    const item = btn.parentElement;
+                    const panel = item.querySelector('.faq-a');
+                    const isOpen = item.classList.contains('open');
+
+                    // Baaki sab band kar do (one-at-a-time)
+                    document.querySelectorAll('.faq-item').forEach(function (other) {
+                        other.classList.remove('open');
+                        other.querySelector('.faq-a').style.maxHeight = null;
+                        other.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+                    });
+
+                    // Agar pehle se open tha to sirf band karo, warna khol do
+                    if (!isOpen) {
+                        item.classList.add('open');
+                        panel.style.maxHeight = panel.scrollHeight + 'px';
+                        btn.setAttribute('aria-expanded', 'true');
+                    }
+                });
+            });
+
+            // Footer year auto-update
+            const yearEl = document.getElementById('year');
+            if (yearEl) yearEl.textContent = new Date().getFullYear();
+        })();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Withdrawal Problem — CROREBET Help Center</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <meta name="theme-color" content="#FFA500">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* Page hero hata diya — form ko top se proper spacing do */
+        .page-wrap {
+            padding-top: 55px;
+        }
+
+        .form-intro-simple {
+            padding-bottom: 24px;
+            margin-bottom: 28px;
+            border-bottom: 1px dashed #eee;
+        }
+
+        .form-intro-simple h2 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #1a1a1a;
+            letter-spacing: -0.2px;
+        }
+
+        @media (max-width: 600px) {
+            .page-wrap {
+                padding-top: 35px;
+            }
+
+            .form-intro-simple h2 {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <a href="index.html" class="logo-link">
+            <img src="logo/logo.png" alt="CROREBET Logo">
+        </a>
+
+        <button class="menu-btn" id="menuBtn" aria-label="Open Menu" aria-expanded="false" aria-controls="sidebar">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <!-- SIDEBAR MENU -->
+    <aside class="sidebar" id="sidebar" aria-hidden="true">
+        <div class="sidebar-header">
+            <img src="logo/logo.png" alt="CROREBET Logo">
+            <button class="sidebar-close" id="sidebarClose" aria-label="Close Menu">&times;</button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="index.html">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 10.5L12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1v-9.5z" stroke="#FFA500" stroke-width="1.8" stroke-linejoin="round"/>
+                </svg>
+                Home
+            </a>
+            <a href="deposit-complaint.html">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2.5" y="6" width="19" height="13" rx="2.5" stroke="#FFA500" stroke-width="1.8"/>
+                    <path d="M2.5 10.5h19" stroke="#FFA500" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M12 19.5v-6M9.5 15.5L12 13l2.5 2.5" stroke="#FFA500" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Deposit Problem
+            </a>
+            <a href="withdrawal-complaint.html" class="active">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2.5" y="6" width="19" height="13" rx="2.5" stroke="#FFA500" stroke-width="1.8"/>
+                    <path d="M2.5 10.5h19" stroke="#FFA500" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M12 13v6M9.5 16.5L12 19l2.5-2.5" stroke="#FFA500" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Withdrawal Problem
+            </a>
+            <a href="email-complaint.html">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2.5" y="5" width="19" height="14" rx="2" stroke="#FFA500" stroke-width="1.8"/>
+                    <path d="M3.5 7l7.4 5.2a2 2 0 0 0 2.2 0L20.5 7" stroke="#FFA500" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Email Verification
+            </a>
+            <a href="index.html#faqs">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="9.2" stroke="#FFA500" stroke-width="1.8"/>
+                    <path d="M9.6 9.2a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1.1 1-1.1 1.7v.4" stroke="#FFA500" stroke-width="1.8" stroke-linecap="round"/>
+                    <circle cx="12" cy="17" r="1.1" fill="#FFA500"/>
+                </svg>
+                FAQs
+            </a>
+            <a href="about.html">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="9.2" stroke="#FFA500" stroke-width="1.8"/>
+                    <path d="M12 11v6" stroke="#FFA500" stroke-width="1.8" stroke-linecap="round"/>
+                    <circle cx="12" cy="7.6" r="1.15" fill="#FFA500"/>
+                </svg>
+                About
+            </a>
+            <a href="terms.html">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.5 3.5h7.5L19 8.5v11a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 5 19.5v-14A1.5 1.5 0 0 1 6.5 3.5z" stroke="#FFA500" stroke-width="1.8" stroke-linejoin="round"/>
+                    <path d="M13.5 3.8V9h5" stroke="#FFA500" stroke-width="1.8" stroke-linejoin="round"/>
+                    <path d="M8.5 13h7M8.5 16.5h4.5" stroke="#FFA500" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+                Terms &amp; Conditions
+            </a>
+            <a href="index.html#contact">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 5.5h16a1.5 1.5 0 0 1 1.5 1.5v9a1.5 1.5 0 0 1-1.5 1.5h-8.5L7 21v-3.5H4A1.5 1.5 0 0 1 2.5 16V7A1.5 1.5 0 0 1 4 5.5z" stroke="#FFA500" stroke-width="1.8" stroke-linejoin="round"/>
+                    <path d="M8 11h8" stroke="#FFA500" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+                Contact Support
+            </a>
+        </nav>
+    </aside>
+
+    <div class="overlay" id="overlay"></div>
+
+    <!-- CONTENT -->
+    <main class="page-wrap">
+        <div class="form-card">
+
+            <div class="form-intro form-intro-simple">
+                <h2>Withdrawal Problem Form</h2>
+            </div>
+
+            <form id="complaintForm" novalidate>
+                <div class="form-grid">
+
+                    <!-- User Name -->
+                    <div class="form-group">
+                        <label for="userName">User Name <span class="req">*</span></label>
+                        <input type="text" id="userName" name="userName" class="form-control"
+                               placeholder="Enter your user name" required>
+                    </div>
+
+                    <!-- Mobile Number -->
+                    <div class="form-group">
+                        <label for="mobile">Mobile Number <span class="req">*</span></label>
+                        <input type="tel" id="mobile" name="mobile" class="form-control"
+                               placeholder="Enter your mobile number" inputmode="numeric"
+                               pattern="[0-9+\-\s]{7,15}" required>
+                    </div>
+
+                    <!-- Email ID -->
+                    <div class="form-group full">
+                        <label for="email">Email ID <span class="req">*</span></label>
+                        <input type="email" id="email" name="email" class="form-control"
+                               placeholder="Enter your registered email address" required>
+                    </div>
+
+                    <!-- Code -->
+                    <div class="form-group full">
+                        <label for="code">Code <span class="req">*</span></label>
+                        <input type="text" id="code" name="code" class="form-control"
+                               placeholder="Enter any code">
+                    </div>
+
+                    <!-- Withdrawal Amount -->
+                    <div class="form-group">
+                        <label for="amount">Enter Withdrawal Amount <span class="req">*</span></label>
+                        <input type="number" id="amount" name="amount" class="form-control"
+                               placeholder="Enter amount" step="0.01" min="1" required>
+                    </div>
+
+                    <!-- Select Problem -->
+                    <div class="form-group">
+                        <label for="problem">Select Problem <span class="req">*</span></label>
+                        <select id="problem" name="problem" class="form-control" required>
+                            <option value="" selected disabled>Select your withdrawal issue</option>
+                            <option value="processing">Processing</option>
+                            <option value="pending">Pending</option>
+                            <option value="failed">Failed</option>
+                            <option value="not-received">Not Received</option>
+                        </select>
+                    </div>
+
+                    <!-- Upload Payment Screenshot -->
+                    <div class="form-group full">
+                        <label>Upload Payment Image <span class="req">*</span></label>
+                        <div class="upload-zone" id="uploadZone">
+                            <input type="file" id="paymentImage" name="paymentImage"
+                                   accept="image/png,image/jpeg,image/jpg,image/webp" required>
+                            <svg class="up-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 16V4M12 4L7.5 8.5M12 4l4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M4 16v2.5A2.5 2.5 0 0 0 6.5 21h11a2.5 2.5 0 0 0 2.5-2.5V16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                            </svg>
+                            <div class="up-title">Upload Image</div>
+                        </div>
+
+                        <div class="file-preview" id="filePreview">
+                            <img src="" alt="Preview" id="previewImg">
+                            <div class="fp-info">
+                                <div class="fp-name" id="previewName">file.png</div>
+                                <div class="fp-size" id="previewSize">0 KB</div>
+                            </div>
+                            <button type="button" class="fp-remove" id="removeFile" aria-label="Remove file">&times;</button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-submit">
+                    <button type="submit" class="btn-submit">
+                        Submit Complaint
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 12h14M13 6l6 6-6 6" stroke="#000" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </form>
+
+            <!-- SUCCESS MESSAGE -->
+            <div class="form-success" id="formSuccess">
+                <div class="succ-icon">&#10003;</div>
+                <h2>Complaint Submitted!</h2>
+                <p>Thank you for reaching out. Our support team has received your withdrawal complaint and will review it shortly.</p>
+                <div class="ref-id" id="refId">REF: WD-000000</div>
+                <div class="succ-actions">
+                    <a href="index.html" class="btn-outline">Back to Home</a>
+                    <button type="button" class="btn-solid-link" id="newComplaint">New Complaint</button>
+                </div>
+            </div>
+
+        </div>
+
+        <p class="form-help">
+            Need help with something else? <a href="index.html">Go back to the Help Center</a> or contact us at
+            <a href="mailto:support@crorebet.com">support@crorebet.com</a>
+        </p>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-col footer-brand">
+                <img src="logo/logo.png" alt="CROREBET Logo">
+                <p>Your trusted help center for fast, friendly and reliable support — whenever you need it.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <a href="index.html">Home</a>
+                <a href="deposit-complaint.html">Deposit Complaint</a>
+                <a href="index.html#withdrawal">Withdrawal Complaint</a>
+                <a href="email-complaint.html">Email Verification</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="about.html">About</a>
+                <a href="terms.html">Terms &amp; Conditions</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>Available 24/7</p>
+                <p>support@crorebet.com</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>&copy; <span id="year"></span> CROREBET Help Center. All rights reserved.</span>
+        </div>
+    </footer>
+
+    <!-- Firebase SDK (v8 compat) -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/firebase-init.js"></script>
+    <script src="js/complaints-store.js"></script>
+    <script>
+        (function () {
+            /* ---------- Menu ---------- */
+            const menuBtn = document.getElementById('menuBtn');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            const sidebarClose = document.getElementById('sidebarClose');
+
+            function openMenu() {
+                sidebar.classList.add('open');
+                overlay.classList.add('show');
+                menuBtn.classList.add('active');
+                document.body.classList.add('no-scroll');
+                menuBtn.setAttribute('aria-expanded', 'true');
+                sidebar.setAttribute('aria-hidden', 'false');
+            }
+
+            function closeMenu() {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('show');
+                menuBtn.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+                menuBtn.setAttribute('aria-expanded', 'false');
+                sidebar.setAttribute('aria-hidden', 'true');
+            }
+
+            menuBtn.addEventListener('click', function () {
+                if (sidebar.classList.contains('open')) closeMenu();
+                else openMenu();
+            });
+
+            overlay.addEventListener('click', closeMenu);
+            sidebarClose.addEventListener('click', closeMenu);
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') closeMenu();
+            });
+            document.querySelectorAll('.sidebar-nav a').forEach(function (link) {
+                link.addEventListener('click', closeMenu);
+            });
+
+            /* ---------- File Upload Preview ---------- */
+            const fileInput = document.getElementById('paymentImage');
+            const filePreview = document.getElementById('filePreview');
+            const previewImg = document.getElementById('previewImg');
+            const previewName = document.getElementById('previewName');
+            const previewSize = document.getElementById('previewSize');
+            const removeFile = document.getElementById('removeFile');
+            const uploadZone = document.getElementById('uploadZone');
+            const MAX_SIZE = 5 * 1024 * 1024; // 5 MB
+            let currentFile = null;
+
+            function formatSize(bytes) {
+                if (bytes < 1024) return bytes + ' B';
+                if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+                return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
+            }
+
+            function showFile(file) {
+                if (!file) return;
+                if (file.size > MAX_SIZE) {
+                    alert('File is too large. Please upload an image smaller than 5 MB.');
+                    fileInput.value = '';
+                    return;
+                }
+                currentFile = file;
+                previewName.textContent = file.name;
+                previewSize.textContent = formatSize(file.size);
+
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    previewImg.src = e.target.result;
+                    filePreview.classList.add('show');
+                };
+                reader.readAsDataURL(file);
+            }
+
+            fileInput.addEventListener('change', function () {
+                showFile(fileInput.files[0]);
+            });
+
+            // Drag & drop support
+            ['dragenter', 'dragover'].forEach(function (evt) {
+                uploadZone.addEventListener(evt, function (e) {
+                    e.preventDefault();
+                    uploadZone.classList.add('dragover');
+                });
+            });
+
+            ['dragleave', 'drop'].forEach(function (evt) {
+                uploadZone.addEventListener(evt, function (e) {
+                    e.preventDefault();
+                    uploadZone.classList.remove('dragover');
+                });
+            });
+
+            uploadZone.addEventListener('drop', function (e) {
+                const dropped = e.dataTransfer.files[0];
+                if (dropped) {
+                    const dt = new DataTransfer();
+                    dt.items.add(dropped);
+                    fileInput.files = dt.files;
+                    showFile(dropped);
+                }
+            });
+
+            removeFile.addEventListener('click', function () {
+                fileInput.value = '';
+                currentFile = null;
+                filePreview.classList.remove('show');
+                previewImg.src = '';
+            });
+
+            /* ---------- Form Submit ---------- */
+            const form = document.getElementById('complaintForm');
+            const formSuccess = document.getElementById('formSuccess');
+            const refId = document.getElementById('refId');
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                // Basic validation
+                if (!form.checkValidity()) {
+                    form.reportValidity();
+                    return;
+                }
+
+                if (!currentFile) {
+                    alert('Please upload your payment image.');
+                    uploadZone.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    return;
+                }
+
+                // Generate reference ID: WD-YYMMDD-XXXX
+                const d = new Date();
+                const yy = String(d.getFullYear()).slice(-2);
+                const mm = String(d.getMonth() + 1).padStart(2, '0');
+                const dd = String(d.getDate()).padStart(2, '0');
+                const rand = String(Math.floor(1000 + Math.random() * 9000));
+                const refCode = 'WD-' + yy + mm + dd + '-' + rand;
+                refId.textContent = 'REF: ' + refCode;
+
+                // Save complaint to store
+                const problemSel = document.getElementById('problem');
+                crbImageThumb(currentFile, function (thumb) {
+                    crbAddComplaint({
+                        id: 'c' + Date.now() + Math.random().toString(36).slice(2, 7),
+                        ref: refCode,
+                        type: 'Withdrawal',
+                        userName: document.getElementById('userName').value.trim(),
+                        mobile: document.getElementById('mobile').value.trim(),
+                        email: document.getElementById('email').value.trim(),
+                        code: document.getElementById('code').value.trim(),
+                        amount: document.getElementById('amount').value.trim(),
+                        problem: problemSel.options[problemSel.selectedIndex].textContent,
+                        problemValue: problemSel.value,
+                        imageName: currentFile ? currentFile.name : '',
+                        imageThumb: thumb,
+                        createdAt: new Date().toISOString(),
+                        status: 'new'
+                    });
+                });
+
+                // Show success
+                form.style.display = 'none';
+                formSuccess.classList.add('show');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // New complaint
+            document.getElementById('newComplaint').addEventListener('click', function () {
+                form.reset();
+                currentFile = null;
+                filePreview.classList.remove('show');
+                previewImg.src = '';
+                formSuccess.classList.remove('show');
+                form.style.display = '';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            /* ---------- Year ---------- */
+            const yearEl = document.getElementById('year');
+            if (yearEl) yearEl.textContent = new Date().getFullYear();
+        })();
+    </script>
+
+</body>
+</html>
