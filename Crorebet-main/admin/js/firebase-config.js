@@ -8,10 +8,10 @@
    ========================================================== */
 
 window.FIREBASE_CONFIG = {
-    apiKey: "",
-    authDomain: "",
-    projectId: "",
-    storageBucket: "",
-    messagingSenderId: "",
-    appId: ""
+    apiKey: "AIzaSyBLB-VnpnxAas9IuQZQ1j-eMPcDIhodGak",
+    authDomain: "AIzaSyBLB-VnpnxAas9IuQZQ1j-eMPcDIhodGak",
+    projectId: "crorebet-main",
+    storageBucket: "crorebet-main.firebasestorage.app",
+    messagingSenderId: "833321035295",
+    appId: "1:833321035295:web:70dde07593d015111cd72a"
 };
