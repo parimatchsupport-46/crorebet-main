@@ -1,15 +1,16 @@
 /* ==========================================================
-   FIREBASE CONFIG — Yahan apna config paste karo
+   FIREBASE CONFIG — Admin Panel
    ----------------------------------------------------------
    Firebase Console → Project Settings → Your apps → Web app
    → "SDK setup and configuration" → Config
 
-   Neeche apni values paste karo (quotes ke andar):
+   NOTE: js/firebase-config.js (root) me bhi same values
+   honi chahiye (dono copies sync rakho).
    ========================================================== */
 
 window.FIREBASE_CONFIG = {
     apiKey: "AIzaSyBLB-VnpnxAas9IuQZQ1j-eMPcDIhodGak",
-    authDomain: "AIzaSyBLB-VnpnxAas9IuQZQ1j-eMPcDIhodGak",
+    authDomain: "crorebet-main.firebaseapp.com",
     projectId: "crorebet-main",
     storageBucket: "crorebet-main.firebasestorage.app",
     messagingSenderId: "833321035295",
