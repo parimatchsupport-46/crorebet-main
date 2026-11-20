@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Login | CROREBET</title>
+
+<link rel="icon" type="image/x-icon" href="../favicon/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32.png">
+<meta name="theme-color" content="#FFA500">
+
+<link rel="stylesheet" href="../css/style.css">
+
+<style>
+    /* ---------- Login page only ---------- */
+    .login-body {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f7f7f8;
+        padding: 24px;
+    }
+
+    .login-card {
+        width: 100%;
+        max-width: 400px;
+        background: #ffffff;
+        border: 1px solid #eaeaea;
+        border-radius: 16px;
+        padding: 38px 32px 32px;
+        box-shadow: 0 10px 34px rgba(0, 0, 0, 0.06);
+    }
+
+    .login-brand {
+        text-align: center;
+        font-size: 1.12rem;
+        font-weight: 800;
+        color: #1a1a1a;
+        letter-spacing: -0.2px;
+        margin-bottom: 4px;
+    }
+
+    .login-brand span {
+        color: #FFA500;
+    }
+
+    .login-sub {
+        text-align: center;
+        font-size: 0.85rem;
+        color: #999;
+        margin-bottom: 26px;
+    }
+
+    .login-form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .lg-group {
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+    }
+
+    .lg-group label {
+        font-size: 0.85rem;
+        font-weight: 650;
+        color: #333;
+    }
+
+    .lg-input {
+        width: 100%;
+        padding: 13px 15px;
+        font-size: 16px;
+        font-family: inherit;
+        color: #222;
+        background: #fdfdfd;
+        border: 1.5px solid #e6e6e6;
+        border-radius: 10px;
+        outline: none;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    }
+
+    .lg-input::placeholder {
+        color: #b3b3b3;
+    }
+
+    .lg-input:focus {
+        border-color: #FFA500;
+        background: #ffffff;
+        box-shadow: 0 0 0 4px rgba(255, 165, 0, 0.12);
+    }
+
+    .lg-pass-wrap {
+        position: relative;
+    }
+
+    .lg-pass-wrap .lg-input {
+        padding-right: 46px;
+    }
+
+    .lg-eye {
+        position: absolute;
+        right: 6px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        background: transparent;
+        color: #b0b0b0;
+        cursor: pointer;
+        border-radius: 8px;
+    }
+
+    .lg-eye:hover {
+        color: #666;
+    }
+
+    .lg-eye svg {
+        width: 17px;
+        height: 17px;
+    }
+
+    .lg-submit {
+        margin-top: 6px;
+        width: 100%;
+        background: #FFA500;
+        color: #000;
+        border: none;
+        border-radius: 10px;
+        padding: 14px 24px;
+        font-size: 0.96rem;
+        font-weight: 700;
+        font-family: inherit;
+        cursor: pointer;
+        transition: background-color 0.2s ease, transform 0.15s ease;
+    }
+
+    .lg-submit:hover:not(:disabled) {
+        background: #e69300;
+        transform: translateY(-1px);
+    }
+
+    .lg-submit:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+    .lg-error {
+        display: none;
+        background: #fff5f5;
+        border: 1px solid #ffd6d6;
+        color: #c0392b;
+        font-size: 0.85rem;
+        font-weight: 600;
+        line-height: 1.5;
+        padding: 11px 14px;
+        border-radius: 9px;
+    }
+
+    .lg-error.show {
+        display: block;
+    }
+
+    .lg-note {
+        margin-top: 20px;
+        padding-top: 18px;
+        border-top: 1px solid #f4f4f4;
+        font-size: 0.78rem;
+        color: #aaa;
+        text-align: center;
+        line-height: 1.6;
+    }
+
+    .lg-note a {
+        color: #FFA500;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    .lg-note a:hover {
+        text-decoration: underline;
+    }
+
+    .lg-spinner {
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        border: 2px solid rgba(0, 0, 0, 0.25);
+        border-top-color: #000;
+        border-radius: 50%;
+        animation: lspin 0.7s linear infinite;
+        margin-right: 8px;
+        vertical-align: -2px;
+    }
+
+    @keyframes lspin {
+        to { transform: rotate(360deg); }
+    }
+</style>
+</head>
+<body class="login-body">
+
+    <div class="login-card">
+        <div class="login-brand">CRORE<span>BET</span> Admin</div>
+        <div class="login-sub">Sign in to manage complaints</div>
+
+        <form class="login-form" id="loginForm" novalidate>
+            <div class="lg-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" class="lg-input" placeholder="admin@crorebet.com" autocomplete="username">
+            </div>
+
+            <div class="lg-group">
+                <label for="password">Password</label>
+                <div class="lg-pass-wrap">
+                    <input type="password" id="password" class="lg-input" placeholder="Enter your password" autocomplete="current-password">
+                    <button type="button" class="lg-eye" id="togglePass" aria-label="Show password">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                            <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="lg-error" id="errorBox"></div>
+
+            <button type="submit" class="lg-submit" id="submitBtn">Sign In</button>
+        </form>
+
+        <div class="lg-note" id="modeNote">
+            Checking Firebase...
+            <br>
+            <a href="../index.html">← Back to Help Center</a>
+        </div>
+    </div>
+
+    <!-- Firebase SDK (v8 compat) -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
+    <script src="../js/firebase-config.js"></script>
+    <script src="../js/firebase-init.js"></script>
+
+    <script>
+    (function () {
+        var form = document.getElementById('loginForm');
+        var emailEl = document.getElementById('email');
+        var passEl = document.getElementById('password');
+        var errBox = document.getElementById('errorBox');
+        var submitBtn = document.getElementById('submitBtn');
+        var modeNote = document.getElementById('modeNote');
+        var togglePass = document.getElementById('togglePass');
+
+        /* ---------- Password visibility ---------- */
+        togglePass.addEventListener('click', function () {
+            if (passEl.type === 'password') {
+                passEl.type = 'text';
+                togglePass.setAttribute('aria-label', 'Hide password');
+                togglePass.style.color = '#FFA500';
+            } else {
+                passEl.type = 'password';
+                togglePass.setAttribute('aria-label', 'Show password');
+                togglePass.style.color = '#b0b0b0';
+            }
+        });
+
+        function showError(msg) {
+            errBox.textContent = msg;
+            errBox.classList.add('show');
+        }
+
+        function clearError() {
+            errBox.classList.remove('show');
+            errBox.textContent = '';
+        }
+
+        function setLoading(on) {
+            submitBtn.disabled = on;
+            submitBtn.innerHTML = on
+                ? '<span class="lg-spinner"></span>Signing in...'
+                : 'Sign In';
+        }
+
+        /* ---------- Firebase mode ---------- */
+        var isFb = window.crbFirebase && window.crbFirebase.enabled;
+
+        if (isFb) {
+            modeNote.innerHTML = 'Secured with Firebase Authentication<br>' +
+                                 '<a href="../index.html">← Back to Help Center</a>';
+
+            /* Already logged in? go straight to dashboard */
+            window.crbFirebase.auth.onAuthStateChanged(function (user) {
+                if (user) window.location.replace('index.html');
+            });
+        } else {
+            var reason = window.crbFirebase ? window.crbFirebase.reason : 'none';
+
+            var msg = 'Demo mode — no authentication required.<br>' +
+                      '<a href="../index.html">← Back to Help Center</a>';
+
+            if (reason === 'config') {
+                msg = '<strong>Firebase not configured.</strong><br>' +
+                      'Add your keys in <code>js/firebase-config.js</code> to enable admin login.' +
+                      '<br><a href="../index.html">← Back to Help Center</a>';
+            } else if (reason === 'sdk') {
+                msg = '<strong>Firebase SDK could not load.</strong><br>' +
+                      'Check your internet connection, then reload.' +
+                      '<br><a href="../index.html">← Back to Help Center</a>';
+            } else if (reason === 'init') {
+                msg = '<strong>Firebase init failed.</strong><br>' +
+                      'Check the config values and Firestore/Auth are enabled.' +
+                      '<br><a href="../index.html">← Back to Help Center</a>';
+            }
+
+            modeNote.innerHTML = msg;
+        }
+
+        /* ---------- Submit ---------- */
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            clearError();
+
+            var email = emailEl.value.trim();
+            var pass = passEl.value;
+
+            if (!email || !pass) {
+                showError('Please enter both email and password.');
+                return;
+            }
+
+            /* Demo mode: straight to panel */
+            if (!isFb) {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            setLoading(true);
+
+            window.crbFirebase.auth
+                .signInWithEmailAndPassword(email, pass)
+                .then(function () {
+                    window.location.replace('index.html');
+                })
+                .catch(function (err) {
+                    setLoading(false);
+                    showError(friendlyError(err));
+                });
+        });
+
+        /* ---------- Friendly Firebase errors ---------- */
+        function friendlyError(err) {
+            var code = (err && err.code) || '';
+
+            switch (code) {
+                case 'auth/invalid-email':
+                    return 'That email address is not valid.';
+                case 'auth/user-disabled':
+                    return 'This account has been disabled. Contact the owner.';
+                case 'auth/user-not-found':
+                    return 'No admin account found with this email.';
+                case 'auth/wrong-password':
+                    return 'Incorrect password. Please try again.';
+                case 'auth/invalid-credential':
+                case 'auth/invalid-login-credentials':
+                    return 'Incorrect email or password. Please try again.';
+                case 'auth/too-many-requests':
+                    return 'Too many failed attempts. Please wait a few minutes.';
+                case 'auth/network-request-failed':
+                    return 'Network error. Check your internet connection.';
+                case 'auth/operation-not-allowed':
+                    return 'Email/Password sign-in is not enabled in Firebase Console.';
+                default:
+                    return (err && err.message) ? err.message : 'Sign in failed. Please try again.';
+            }
+        }
+
+        /* clear error while typing */
+        [emailEl, passEl].forEach(function (el) {
+            el.addEventListener('input', clearError);
+        });
+    })();
+    </script>
+
+</body>
+</html>
